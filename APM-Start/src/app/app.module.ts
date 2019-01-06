@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,20 +15,16 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { ProductModule } from './products/product.module';
 import { UserModule } from './user/user.module';
 import { MessageModule } from './messages/message.module';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
-    BrowserModule,RouterModule.forRoot([
-      {path:"welcome", component:WelcomeComponent},
-      {path:'',redirectTo:"welcome", pathMatch:"full"},
-      { path:"**", component:PageNotFoundComponent}
-    ]),
+    BrowserModule,
     HttpClientModule,
     InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
     ProductModule,
     UserModule,
-    MessageModule
+    MessageModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
